@@ -4,7 +4,7 @@ A font created to help students **learn and read Tifinagh faster** :zap: by disp
 
 :rocket: repository role | :construction: issues
 :--- | :---
-hosting [fonts releases](/parlr/tifinagh-font/releases) | go to [ ruby-font-creator](https://github.com/parlr/ruby-font-creator/issues)
+hosting [fonts releases](https://github.com/parlr/tifinagh-font/releases) | go to [ ruby-font-creator](https://github.com/parlr/ruby-font-creator/issues)
 
 ## Usage
 
