@@ -1,0 +1,11 @@
+{
+  "name": "tifinagh-pronunciation-font",
+  "version": "0.1.0",
+  "description": "Tifinagh font with pronunciation (Berber languages)",
+  "repository": "git@github.com:parlr/tifinagh-pronunciation-font.git",
+  "author": "Édouard Lopez <contact@edouard-lopez.com>",
+  "license": [
+    "apache-2.0",
+    "cc-by-sa-4.0"
+  ]
+}
