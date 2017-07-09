@@ -7,7 +7,8 @@ endif
 # force use of Bash
 SHELL := /bin/bash
 INTERACTIVE=true
-DATA_PATH=../tifinagh-data/
+LANGUAGE_DATA_DIR=tifinagh-data
+FONT_CREATOR_PATH=../
 
 .PHONY: default
 
@@ -18,19 +19,31 @@ build-all: build-latin build-api build-arabic
 generate-all-fonts: generate-latin-font generate-api-font generate-arabic-font
 
 build-latin:
-	cd ${DATA_PATH} && pwd && yarn build -- --latin
+	cd ../${LANGUAGE_DATA_DIR} && yarn build -- --latin
 
 build-api:
-	cd ${DATA_PATH} && pwd && yarn build -- --api
+	cd ../${LANGUAGE_DATA_DIR} && yarn build -- --api
 
 build-arabic:
-	cd ${DATA_PATH} && pwd && yarn build -- --arabic
+	cd ../${LANGUAGE_DATA_DIR} && yarn build -- --arabic
 
-generate-latin-font:
-	${DATA_PATH}src/data-latin.json
+generate-latin-font: reset
+	cd ${FONT_CREATOR_PATH} \
+	&& pwd && yarn build -- \
+		--config ./config/top.tifinagh.js \
+		--data ./${LANGUAGE_DATA_DIR}/src/data-latin.json
 
-generate-api-font:
-	${DATA_PATH}src/data-api.json
+generate-api-font: reset
+	cd ${FONT_CREATOR_PATH} \
+	&& pwd && yarn build -- \
+		--config ./config/top.tifinagh.js \
+		--data ./${LANGUAGE_DATA_DIR}/src/data-API.json
 
-generate-arabic-font:
-	${DATA_PATH}src/data-arabic.json
+generate-arabic-font: reset
+	cd ${FONT_CREATOR_PATH} \
+	&& pwd && yarn build -- \
+		--config ./config/top.tifinagh.js \
+		--data ./${LANGUAGE_DATA_DIR}/src/data-arabic.json
+
+reset:
+	rm ${FONT_CREATOR_PATH}/build/svg --recursive --force
